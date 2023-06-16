@@ -5,15 +5,15 @@ const app = express();
 async function CorotosGetData(search){
     const url = 'https://www.corotos.com.do/k/' + search + '?q%5Bsorts%5D=price_dop%20asc'; // + search
     const browser = await puppeteer.launch({
-        headless: false,
+        headless: true,
         ignoreDefaultArgs: ['--disable-extensions'],
         args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage'],
-        //executablePath: '/usr/bin/chromium-browser'
+        executablePath: '/usr/bin/chromium-browser'
         
     });
     
     const page = await browser.newPage();
-    await page.setUserAgent("Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36");
+    //await page.setUserAgent("Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36");
 
 
     await page.goto(url);
